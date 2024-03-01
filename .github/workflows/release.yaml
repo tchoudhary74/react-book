@@ -1,0 +1,12 @@
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Determine Version and Create Tag
+        run: |
+          version=$(date +'%Y%m%d%H%M%S')
+          echo "Generated version: $version"  # Add this line for debugging
+          git tag $version
+          git push origin $version
